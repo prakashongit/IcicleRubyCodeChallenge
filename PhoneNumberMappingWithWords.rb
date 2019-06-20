@@ -142,7 +142,7 @@ def get_three_words(first_words, middle_words, last_words)
 three_words_result = []
  if(first_words.length > 0 && middle_words.length > 0)
    (0...last_words.length).each do |index|
-      three_words_result << first_words[0] + "," + middle_words[0] + ", " +  last_words[index]
+      three_words_result << first_words[0] + ", " + middle_words[0] + ", " +  last_words[index]
    end
  end
  
@@ -151,12 +151,12 @@ three_words_result = []
  ###
  #if(last_words.length > 0 && middle_words.length > 0)
    #(0...middle_words.length).each do |index|
-    #  three_words_result << first_words[0] + "," + middle_words[index] + ", " +  last_words[0]
+    #  three_words_result << first_words[0] + ", " + middle_words[index] + ", " +  last_words[0]
    #end
  #end
  #if(first_words.length > 0 && last_words.length > 0)
    #(0...first_words.length).each do |index|
-      #three_words_result << first_words[index] + "," + middle_words[0] + ", " +  last_words[0]
+      #three_words_result << first_words[index] + ", " + middle_words[0] + ", " +  last_words[0]
    #end
  #end
 three_words_result
