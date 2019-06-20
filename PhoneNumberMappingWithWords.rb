@@ -30,22 +30,24 @@ def get_words_combinations(number)
   
  # Get words from dictionary
  dictionary = File.open("dictionary.txt")
- dictionary_words = dictionary.readlines.map(&:strip)
+ dictionary_words = dictionary.readlines.map(&:strip).map(&:downcase)
  dictionary.close
  # end
 
- get_single_word(number)
- get_two_words(number)
- get_two_words(number)
- get_two_words(number)
- get_three_words(number)
+ get_single_word(number, dictionary_words)
+# get_two_words(number, dictionary)
+# get_three_words(number, dictionary)
 
 end
 
 private
 
-def get_single_word(number)
- puts 'single'
+def get_single_word(number, dictionary_words)
+ get_ten_letter_word = dictionary_words.select { |word| word.length == 10}
+ (0..9).each do |index|
+  get_ten_letter_word = get_ten_letter_word.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index]) } 
+ end
+ puts get_ten_letter_word
 end
 
 def get_two_words(number)
@@ -60,5 +62,8 @@ end
 
 # Testing
 phone_number_mapping_with_words =  PhoneNumberMappingWithWords.new
-phone_number_mapping_with_words.get_words_combinations(233)
-phone_number_mapping_with_words.get_words_combinations("asfasf")
+#phone_number_mapping_with_words.get_words_combinations(1233)
+#phone_number_mapping_with_words.get_words_combinations(233)
+#phone_number_mapping_with_words.get_words_combinations("asfasf")
+
+phone_number_mapping_with_words.get_words_combinations(6686787825) #testing 10 letter word
