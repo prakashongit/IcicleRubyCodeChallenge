@@ -12,6 +12,7 @@ class PhoneNumberMappingWithWords
 }
 
 def get_words_combinations(number)
+
  # check for give input should be number
  unless(number.class == Fixnum)
   return puts "please give 10 digit number"
@@ -19,7 +20,12 @@ def get_words_combinations(number)
 
  # check for number should not contain 0 or 1
  if(number.to_s.include?("0") || number.to_s.include?("1"))
-  return puts "Error: Should not contain 0 or 1"
+  return puts "Given number should not contain 0 or 1"
+ end
+ 
+ # check for it should be 10 digit number
+ unless(number.to_s.length == 10)
+  return puts "Given number should be less or greater than 10 digits"
  end
   
  # Get words from dictionary
@@ -39,7 +45,7 @@ end
 private
 
 def get_single_word(number)
- puts 'one word'
+ puts 'single'
 end
 
 def get_two_words(number)
@@ -54,5 +60,5 @@ end
 
 # Testing
 phone_number_mapping_with_words =  PhoneNumberMappingWithWords.new
-phone_number_mapping_with_words.get_words_combinations(123)
+phone_number_mapping_with_words.get_words_combinations(233)
 phone_number_mapping_with_words.get_words_combinations("asfasf")
