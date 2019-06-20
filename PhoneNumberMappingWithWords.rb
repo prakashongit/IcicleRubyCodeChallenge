@@ -52,9 +52,11 @@ end
 
 def get_two_words(number, dictionary_words)
  get_four_letter_word = dictionary_words.select { |word| word.length == 4}
+ get_four_letter_word2 = dictionary_words.select { |word| word.length == 4}
  get_five_letter_word1 = dictionary_words.select { |word| word.length == 5}
  get_five_letter_word2 = dictionary_words.select { |word| word.length == 5}
  get_six_letter_word = dictionary_words.select { |word| word.length == 6}
+ get_six_letter_word2 = dictionary_words.select { |word| word.length == 6}
 
  (0..9).each do |index|
   if(index < 4)
@@ -62,7 +64,7 @@ def get_two_words(number, dictionary_words)
   else
    get_six_letter_word = get_six_letter_word.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index-4]) }
   end
- end
+end
  
  (0..9).each do |index|
   if(index < 5)
@@ -72,14 +74,48 @@ def get_two_words(number, dictionary_words)
   end
  end
 
- count =  get_four_letter_word.length <  get_six_letter_word.length ?  get_four_letter_word.length :  get_six_letter_word.length
- (0...count).each do |index|
-   puts  get_four_letter_word[index] + ", " +  get_six_letter_word[index]
+ if(get_four_letter_word.length > 0)
+   (0...get_six_letter_word.length).each do |index|
+    puts  get_four_letter_word[0] + ", " +  get_six_letter_word[index]
+   end
  end
 
- count =  get_five_letter_word1.length <  get_five_letter_word2.length ?  get_five_letter_word1.length :  get_five_letter_word2.length
- (0...count).each do |index|
-   puts get_five_letter_word1[index] + ", " +  get_five_letter_word2[index]
+ if(get_five_letter_word1.length > 0)
+   (0...get_five_letter_word2.length).each do |index|
+     puts get_five_letter_word1[0] + ", " +  get_five_letter_word2[index]
+   end
+ end
+
+ 
+ (0..9).each do |index|
+  if(index < 6)
+   get_six_letter_word2 = get_six_letter_word2.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index]) }
+  else
+    get_four_letter_word2 =  get_four_letter_word2.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index-6]) }
+  end
+ end
+
+ if(get_four_letter_word2.length > 0)
+   (0...get_six_letter_word2.length).each do |index|
+    puts get_six_letter_word2[0] + ", " +  get_four_letter_word2[index]
+   end
+ end
+
+ get_three_letter_word = dictionary_words.select { |word| word.length == 3}
+ get_seven_letter_word = dictionary_words.select { |word| word.length == 7}
+ 
+ (0..9).each do |index|
+  if(index < 3)
+   get_three_letter_word = get_three_letter_word.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index]) }
+  else
+    get_seven_letter_word =  get_seven_letter_word.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index-3]) }
+  end
+ end
+ 
+ if(get_three_letter_word.length > 0)
+   (0... get_seven_letter_word.length).each do |index|
+    puts get_three_letter_word[0] + ", " +   get_seven_letter_word[index]
+   end
  end
 end
 
@@ -98,6 +134,21 @@ def get_three_words(number, dictionary_words)
   end
  end
  puts  get_three_letter_word1[0] + ", " +  get_three_letter_word2[0] + ", " +  get_four_letter_word[0]
+
+ get_three_letter_word1 = dictionary_words.select { |word| word.length == 3}
+ get_three_letter_word2 = dictionary_words.select { |word| word.length == 3}
+ get_four_letter_word = dictionary_words.select { |word| word.length == 4}
+
+ (0..9).each do |index|
+  if(index < 3)
+   get_three_letter_word1 = get_three_letter_word1.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index]) }
+  elsif(index < 7)
+   get_four_letter_word = get_four_letter_word.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index-3]) }
+  else
+    get_three_letter_word2 = get_three_letter_word2.select { |word| @@NumberMapping[number.to_s[index].to_i].include?(word[index-7]) }
+  end
+ end
+ puts  get_three_letter_word1[0] + ", " +  get_four_letter_word[0] + ", " +  get_three_letter_word2[0] 
 end
 end
 
@@ -108,8 +159,8 @@ phone_number_mapping_with_words =  PhoneNumberMappingWithWords.new
 #phone_number_mapping_with_words.get_words_combinations("asfasf")
 
 #phone_number_mapping_with_words.get_words_combinations(6686787825) #testing 10 letter word
-phone_number_mapping_with_words.get_words_combinations(6686787825)
-#phone_number_mapping_with_words.get_words_combinations(2282668687)
+#phone_number_mapping_with_words.get_words_combinations(6686787825)
+phone_number_mapping_with_words.get_words_combinations(2282668687)
 
 
 
