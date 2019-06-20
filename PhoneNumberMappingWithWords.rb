@@ -109,7 +109,7 @@ result << get_three_words(get_first_three_letter_words, get_middle_three_letter_
 result << get_three_words(get_first_three_letter_words,  get_middle_four_letter_words, get_last_three_letter_words)
 result << get_three_words(get_first_four_letter_words, get_middle_three_letter_words, get_last_three_letter_words)
 
-puts result
+#puts result
 end
 
 private
@@ -164,13 +164,13 @@ end
 end
 
 # Testing
-phone_number_mapping_with_words =  PhoneNumberMappingWithWords.new
+#phone_number_mapping_with_words =  PhoneNumberMappingWithWords.new
 #phone_number_mapping_with_words.get_words_combinations(1233)
 #phone_number_mapping_with_words.get_words_combinations(233)
 #phone_number_mapping_with_words.get_words_combinations("asfasf")
 
 #phone_number_mapping_with_words.get_words_combinations(6686787825) #testing 10 letter word
-phone_number_mapping_with_words.get_words_combinations(6686787825)
+#phone_number_mapping_with_words.get_words_combinations(6686787825)
 #phone_number_mapping_with_words.get_words_combinations(2282668687)
 
 
